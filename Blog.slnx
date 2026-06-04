@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="Blog.Application/Blog.Application.csproj" />
+    <Project Path="Blog.Domain/Blog.Domain.csproj" Id="9893a941-7b4d-41bd-80b6-300c4c9cef0d" />
+    <Project Path="Blog.Infrastructure/Blog.Infrastructure.csproj" />
+    <Project Path="Blog.Web/Blog.Web.csproj" />
+  </Folder>
+</Solution>
