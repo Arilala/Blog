@@ -3,11 +3,13 @@
     public static class SqlResources
     {
         #region MIGRATION TABLE
-        public const string CreateUserTable    = "Blog.Infrastructure.Sql.Migrations.CreateUserTable.sql"; 
-        public const string InsertVersion      = "Blog.Infrastructure.Sql.Migrations.InsertVersion.sql"; 
-        public const string UpdateVersion      = "Blog.Infrastructure.Sql.Migrations.UpdateVersion.sql"; 
-        public const string CreateVersionTable = "Blog.Infrastructure.Sql.Migrations.CreateVersionTable.sql"; 
-        public const string GetVersion         = "Blog.Infrastructure.Sql.Migrations.GetVersion.sql"; 
+        public const string CreateUserTable      = "Blog.Infrastructure.Sql.Migrations.CreateUserTable.sql"; 
+        public const string InsertVersion        = "Blog.Infrastructure.Sql.Migrations.InsertVersion.sql"; 
+        public const string UpdateVersion        = "Blog.Infrastructure.Sql.Migrations.UpdateVersion.sql"; 
+        public const string CreateVersionTable   = "Blog.Infrastructure.Sql.Migrations.CreateVersionTable.sql"; 
+        public const string GetVersion           = "Blog.Infrastructure.Sql.Migrations.GetVersion.sql"; 
+        public const string CreateRoleTable      = "Blog.Infrastructure.Sql.Migrations.CreateRoleTable.sql"; 
+        public const string CreateUserRolesTable = "Blog.Infrastructure.Sql.Migrations.CreateUserRoleTable.sql"; 
         #endregion
         #region USER
         public const string GetAllUsers              = "Blog.Infrastructure.Sql.Users.GetAllUsers.sql";

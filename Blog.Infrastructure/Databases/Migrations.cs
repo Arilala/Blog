@@ -30,6 +30,17 @@ namespace Blog.Infrastructure.Databases
             Excecute(_sqlQueryProvider.GetSqlQuery(Sql.SqlResources.CreateUserTable));
         }
 
+        public void CreateUserTable_2()
+        {
+            Excecute(_sqlQueryProvider.GetSqlQuery(Sql.SqlResources.CreateRoleTable));
+        }
+
+
+        public void CreateUserTable_3()
+        {
+            Excecute(_sqlQueryProvider.GetSqlQuery(Sql.SqlResources.CreateUserRolesTable));
+        }
+
         public void RunMigrations()
         {
             var type = GetType();
