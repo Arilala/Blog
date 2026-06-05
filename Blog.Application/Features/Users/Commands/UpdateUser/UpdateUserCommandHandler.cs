@@ -1,7 +1,5 @@
 ﻿using Blog.Application.Exceptions;
-using Blog.Application.Features.Users.Commands.CreateUser;
 using Blog.Application.Interfaces.Repository;
-using Blog.Application.Interfaces.SqlFactory;
 using LiteBus.Commands.Abstractions;
 
 namespace Blog.Application.Features.Users.Commands.UpdateUser
@@ -15,13 +13,13 @@ namespace Blog.Application.Features.Users.Commands.UpdateUser
 
             if (!validationResult.IsValid)
             {
-                throw new BadRequestException("Invalid user data provided.",validationResult);
+                throw new BadRequestException("Invalid user data provided.", validationResult);
             }
 
             var userUpdate = await userRepository.GetByIdAsync(command.Id, cancellationToken);
             if (userUpdate == null)
             {
-                throw new BadRequestException($"User with ID {command.Id} not found.");
+                throw new NotFoundException(nameof(userUpdate), command.Id);
             }
             var userRecord = await userRepository.ExistsByNameOrEmailAsync(command.Username, command.Email, cancellationToken);
             if (userRecord)

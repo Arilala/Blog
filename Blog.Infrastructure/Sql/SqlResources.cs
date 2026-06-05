@@ -19,7 +19,18 @@
         public const string DeleteUser               = "Blog.Infrastructure.Sql.Users.DeleteUser.sql";
         public const string CheckUserByNameOrByEmail = "Blog.Infrastructure.Sql.Users.CheckUserByNameOrByEmail.sql";
         public const string GetUserByName            = "Blog.Infrastructure.Sql.Users.GetUserByName.sql"; 
-        public const string GetUserByEmail           = "Blog.Infrastructure.Sql.Users.GetUserByEmail.sql"; 
+        public const string GetUserByEmail           = "Blog.Infrastructure.Sql.Users.GetUserByEmail.sql";
         #endregion
+
+        #region ROLE
+        public const string InsertRole  = "Blog.Infrastructure.Sql.Roles.InsertRole.sql";
+        public const string UpdateRole  = "Blog.Infrastructure.Sql.Roles.UpdateRole.sql";
+        public const string DeleteRole  = "Blog.Infrastructure.Sql.Roles.DeleteRole.sql"; 
+        public const string GetAllRoles = "Blog.Infrastructure.Sql.Roles.GetAllRoles.sql";
+        public const string GetRole     = "Blog.Infrastructure.Sql.Roles.GetRole.sql";
+        public const string GetRoleByName = "Blog.Infrastructure.Sql.Roles.GetRoleByName.sql";
+        public const string CheckRoleByName = "Blog.Infrastructure.Sql.Roles.CheckRoleByName.sql";
+        #endregion
+
     }
 }

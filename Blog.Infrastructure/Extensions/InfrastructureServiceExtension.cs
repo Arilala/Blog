@@ -23,6 +23,7 @@ namespace Blog.Infrastructure.Extensions
                 services.AddSingleton<ISqlQueryProvider, SqlQueryProvider>();
                 //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                 services.AddScoped<IUserRepository, UserRepository>();
+                services.AddScoped<IRoleRepository, RoleRepository>();
                 return services;
             }
         }

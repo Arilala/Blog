@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Blog.Application.Features.Users.Queriers.CheckUser;
+using Blog.Application.Features.Users.Queries.CheckUser;
 using Blog.Web.Models;
 using LiteBus.Queries.Abstractions;
 using Microsoft.AspNetCore.Authentication;

@@ -22,7 +22,7 @@ namespace Blog.Application.Features.Users.Commands.DeleteUser
             var userExists = await userRepository.GetByIdAsync(command.Id, cancellationToken);
             if (userExists == null)
             {
-                throw new BadRequestException($"User with ID {command.Id} not found.");
+                throw new NotFoundException(nameof(userExists), command.Id);
             }
             return await userRepository.DeleteAsync(command.Id, cancellationToken);
         }

@@ -1,15 +1,15 @@
-using Blog.Application.Features.Users.Commands.CreateUser;
+using Blog.Application.Features.Roles.Commands.CreateRole;
+using Blog.Application.Features.Roles.Commands.UpdateRole;
 using Blog.Web.Models;
 using LiteBus.Commands.Abstractions;
 using LiteBus.Queries.Abstractions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 namespace Blog.Web.Controllers
 {
 
-    [Authorize]
+    // [Authorize]
     public class HomeController : Controller
     {
         private readonly ICommandMediator _commandMediator;
@@ -41,13 +41,24 @@ namespace Blog.Web.Controllers
 
             //}
 
-            string? username = User.Identity?.Name;
+            //string? username = User.Identity?.Name;
 
-            string? userId = User.FindFirstValue(
-                ClaimTypes.NameIdentifier);
+            //string? userId = User.FindFirstValue(
+            //    ClaimTypes.NameIdentifier);
 
-            string? email = User.FindFirstValue(
-                ClaimTypes.Email);
+            //string? email = User.FindFirstValue(
+            //    ClaimTypes.Email);
+
+            //var roleAdmin = new CreateRoleCommand("Admin", "Administrateur du blog");
+            //var roleUser = new CreateRoleCommand("User");
+
+            //await _commandMediator.SendAsync(roleAdmin);
+            //await _commandMediator.SendAsync(roleUser);
+
+            var roleUserUpdate = new UpdateRoleCommand(2, "User", "Utilisateur du blog");
+
+            await _commandMediator.SendAsync(roleUserUpdate);
+
 
 
             return View();

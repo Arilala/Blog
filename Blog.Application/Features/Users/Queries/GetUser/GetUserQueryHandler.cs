@@ -1,7 +1,7 @@
 ﻿using Blog.Application.Interfaces.Repository;
 using LiteBus.Queries.Abstractions;
 
-namespace Blog.Application.Features.Users.Queriers.GetUser
+namespace Blog.Application.Features.Users.Queries.GetUser
 {
     internal sealed class GetUserQueryHandler(IUserRepository userRepository)
         : IQueryHandler<GetUserQuery, GetUserQueryDto?>

@@ -2,7 +2,7 @@
 using Blog.Application.Interfaces.Security;
 using LiteBus.Queries.Abstractions;
 
-namespace Blog.Application.Features.Users.Queriers.CheckUser
+namespace Blog.Application.Features.Users.Queries.CheckUser
 {
     internal sealed class CheckUserQueryHandler(
         IUserRepository userRepository,

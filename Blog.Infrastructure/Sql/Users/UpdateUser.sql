@@ -1,4 +1,5 @@
 ﻿UPDATE Users
 SET    Username = @Username,
-       Email    = @Email
+       Email    = @Email,
+       UpdatedAt   = @UpdatedAt
 WHERE  Id = @Id;
