@@ -1,4 +1,5 @@
 using Blog.Infrastructure.Databases;
+using Blog.Web.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,8 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.InitialiseDatabase();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -44,8 +47,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-using var scope = app.Services.CreateScope();
-var migrations = scope.ServiceProvider.GetRequiredService<Migrations>();
-migrations.RunMigrations();
+//using var scope = app.Services.CreateScope();
+//var migrations = scope.ServiceProvider.GetRequiredService<Migrations>();
+//migrations.RunMigrations();
 
 app.Run();

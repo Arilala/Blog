@@ -19,10 +19,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj" />
   </ItemGroup>
- 
-  
-  <ItemGroup>
-    <Folder Include="Features\Roles\Queries\" />
-  </ItemGroup>
 
 </Project>

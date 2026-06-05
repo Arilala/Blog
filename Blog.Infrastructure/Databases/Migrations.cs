@@ -1,4 +1,5 @@
-﻿using Blog.Application.Interfaces.SqlFactory;
+﻿using Blog.Application.Interfaces.Repository;
+using Blog.Application.Interfaces.SqlFactory;
 using Dapper;
 
 namespace Blog.Infrastructure.Databases
@@ -7,14 +8,18 @@ namespace Blog.Infrastructure.Databases
     {
         private readonly ISqlConnectionFactory _connectionFactory;
         private readonly ISqlQueryProvider _sqlQueryProvider;
+       
 
         public Migrations(
             ISqlConnectionFactory connectionFactory,
             ISqlQueryProvider sqlQueryProvider
+           
+        
         )
         {
             _connectionFactory = connectionFactory;
             _sqlQueryProvider = sqlQueryProvider;
+           
         }
 
         void Excecute(string sql)
@@ -41,6 +46,8 @@ namespace Blog.Infrastructure.Databases
             Excecute(_sqlQueryProvider.GetSqlQuery(Sql.SqlResources.CreateUserRolesTable));
         }
 
+
+        
         public void RunMigrations()
         {
             var type = GetType();

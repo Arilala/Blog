@@ -20,6 +20,7 @@
         public const string CheckUserByNameOrByEmail = "Blog.Infrastructure.Sql.Users.CheckUserByNameOrByEmail.sql";
         public const string GetUserByName            = "Blog.Infrastructure.Sql.Users.GetUserByName.sql"; 
         public const string GetUserByEmail           = "Blog.Infrastructure.Sql.Users.GetUserByEmail.sql";
+        public const string AddRoleUser              = "Blog.Infrastructure.Sql.Users.AddRoleUser.sql";
         #endregion
 
         #region ROLE

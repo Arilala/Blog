@@ -1,4 +1,6 @@
-﻿using Blog.Application.Interfaces.Security;
+﻿using Blog.Application.Interfaces.Common;
+using Blog.Application.Interfaces.Security;
+using Blog.Application.Services.Common;
 using Blog.Application.Services.Security;
 using LiteBus.Commands;
 using LiteBus.Extensions.Microsoft.DependencyInjection;
@@ -27,6 +29,7 @@ namespace Blog.Application.Extensions
             });
 
             services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<IInitApplication, InitApplication>();
             return services;
         }
     }

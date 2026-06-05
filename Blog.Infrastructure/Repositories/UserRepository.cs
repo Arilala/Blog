@@ -25,6 +25,18 @@ namespace Blog.Infrastructure.Repositories
 
         protected override string SelectByIdSql => Sql.SqlResources.GetUser;
 
+        public async Task<bool> AddRoleToUserAsync(int userId, int roleId, CancellationToken ct = default)
+        {
+            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.AddRoleUser);
+            using var connection = ConnectionFactory.GetOpenConnection();
+            var command = new CommandDefinition(
+                commandText: sql,
+                parameters: new { UserId = userId, RoleId = roleId },
+                cancellationToken: ct
+            );
+            return await connection.ExecuteAsync(command) > 0;
+        }
+
         public async Task<bool> ExistsByNameOrEmailAsync(
             string name,
             string email,

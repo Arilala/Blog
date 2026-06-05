@@ -1,4 +1,5 @@
 using Blog.Application.Features.Roles.Commands.CreateRole;
+using Blog.Application.Features.Roles.Commands.DeleteRole;
 using Blog.Application.Features.Roles.Commands.UpdateRole;
 using Blog.Web.Models;
 using LiteBus.Commands.Abstractions;
@@ -55,9 +56,13 @@ namespace Blog.Web.Controllers
             //await _commandMediator.SendAsync(roleAdmin);
             //await _commandMediator.SendAsync(roleUser);
 
-            var roleUserUpdate = new UpdateRoleCommand(2, "User", "Utilisateur du blog");
+            //var roleUserUpdate = new UpdateRoleCommand(2, "User", "Utilisateur du blog");
 
-            await _commandMediator.SendAsync(roleUserUpdate);
+            //await _commandMediator.SendAsync(roleUserUpdate);
+
+            //var roleToDelete = new DeleteRoleCommand(2);
+            //await _commandMediator.SendAsync(roleToDelete);
+
 
 
 
