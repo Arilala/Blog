@@ -31,6 +31,7 @@
         public const string GetRole     = "Blog.Infrastructure.Sql.Roles.GetRole.sql";
         public const string GetRoleByName = "Blog.Infrastructure.Sql.Roles.GetRoleByName.sql";
         public const string CheckRoleByName = "Blog.Infrastructure.Sql.Roles.CheckRoleByName.sql";
+        public const string GetRoleByUserId = "Blog.Infrastructure.Sql.Roles.GetRoleByUserId.sql";
         #endregion
 
     }

@@ -1,5 +1,5 @@
 ﻿namespace Blog.Application.Features.Users.Queries.CheckUser
 {
-    public record CheckUserQueryDto(int Id, string Username, string Email, DateTime CreatedAt);
+    public record CheckUserQueryDto(int Id, string Username, string Email, DateTime CreatedAt, List<string> Roles);
 
 }

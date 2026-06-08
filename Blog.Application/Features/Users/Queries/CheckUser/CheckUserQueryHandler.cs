@@ -6,7 +6,8 @@ namespace Blog.Application.Features.Users.Queries.CheckUser
 {
     internal sealed class CheckUserQueryHandler(
         IUserRepository userRepository,
-        IPasswordService passwordService
+        IPasswordService passwordService,
+        IRoleRepository roleRepository
     ) : IQueryHandler<CheckUserQuery, CheckUserQueryDto?>
     {
         public async Task<CheckUserQueryDto?> HandleAsync(
@@ -14,6 +15,7 @@ namespace Blog.Application.Features.Users.Queries.CheckUser
             CancellationToken cancellationToken = default
         )
         {
+            List<string> userRoles = new List<string>();
             var userEnity = await userRepository.GetUserByNameAsync(
                 message.Username,
                 cancellationToken
@@ -30,11 +32,17 @@ namespace Blog.Application.Features.Users.Queries.CheckUser
             {
                 return null;
             }
+            var roles = await roleRepository.GetRoleByUserIdAsync(userEnity.Id, cancellationToken);
+            if (roles != null)
+            {
+                userRoles.AddRange(roles.Select(r => r.Name));
+            }
             return new CheckUserQueryDto(
                 userEnity.Id,
                 userEnity.Username,
                 userEnity.Email,
-                userEnity.CreatedAt
+                userEnity.CreatedAt,
+                userRoles
             );
         }
     }

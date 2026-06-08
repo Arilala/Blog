@@ -73,5 +73,10 @@ namespace Blog.Infrastructure.Repositories
         }
 
 
+        protected string GetSqlQuery(string sqlKey)
+        {
+            return QueryProvider.GetSqlQuery(sqlKey);
+        }
+
     }
 }

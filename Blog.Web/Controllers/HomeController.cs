@@ -1,16 +1,14 @@
-using Blog.Application.Features.Roles.Commands.CreateRole;
-using Blog.Application.Features.Roles.Commands.DeleteRole;
-using Blog.Application.Features.Roles.Commands.UpdateRole;
 using Blog.Web.Models;
 using LiteBus.Commands.Abstractions;
 using LiteBus.Queries.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 namespace Blog.Web.Controllers
 {
 
-    // [Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ICommandMediator _commandMediator;
@@ -42,13 +40,15 @@ namespace Blog.Web.Controllers
 
             //}
 
-            //string? username = User.Identity?.Name;
+            string? username = User.Identity?.Name;
 
-            //string? userId = User.FindFirstValue(
-            //    ClaimTypes.NameIdentifier);
+            string? userId = User.FindFirstValue(
+                ClaimTypes.NameIdentifier);
 
-            //string? email = User.FindFirstValue(
-            //    ClaimTypes.Email);
+            string? email = User.FindFirstValue(
+                ClaimTypes.Email);
+
+            var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
 
             //var roleAdmin = new CreateRoleCommand("Admin", "Administrateur du blog");
             //var roleUser = new CreateRoleCommand("User");

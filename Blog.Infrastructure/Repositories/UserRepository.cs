@@ -25,9 +25,13 @@ namespace Blog.Infrastructure.Repositories
 
         protected override string SelectByIdSql => Sql.SqlResources.GetUser;
 
-        public async Task<bool> AddRoleToUserAsync(int userId, int roleId, CancellationToken ct = default)
+        public async Task<bool> AddRoleToUserAsync(
+            int userId,
+            int roleId,
+            CancellationToken ct = default
+        )
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.AddRoleUser);
+            string sql = GetSqlQuery(Sql.SqlResources.AddRoleUser);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,
@@ -43,7 +47,7 @@ namespace Blog.Infrastructure.Repositories
             CancellationToken ct = default
         )
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.CheckUserByNameOrByEmail);
+            string sql = GetSqlQuery(Sql.SqlResources.CheckUserByNameOrByEmail);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,
@@ -58,7 +62,7 @@ namespace Blog.Infrastructure.Repositories
             CancellationToken ct = default
         )
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.GetUserByEmail);
+            string sql = GetSqlQuery(Sql.SqlResources.GetUserByEmail);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,
@@ -73,7 +77,7 @@ namespace Blog.Infrastructure.Repositories
             CancellationToken ct = default
         )
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.GetUserByName);
+            string sql = GetSqlQuery(Sql.SqlResources.GetUserByName);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,

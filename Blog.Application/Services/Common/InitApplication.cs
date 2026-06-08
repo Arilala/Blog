@@ -13,7 +13,38 @@ namespace Blog.Application.Services.Common
     {
         public async Task RunInitAsync()
         {
-            Domain.Entity.RoleEntity? roleAdmin = await roleRepository.GetRoleByNameAsync(RoleConstantType.Admin);
+            // Seed Admin and User roles
+            await RunSeedRoleAdminAndUserAsync();
+            // Create superadmin user with default password "superadmin"
+            await RunSeedUserAdminAsync();
+            // Assign Admin and User roles to superadmin
+            await RunSeedRoleUserAdminAsync();
+        }
+
+        async Task RunSeedRoleUserAdminAsync()
+        {
+            var superAdmin = await userRepository.GetUserByNameAsync("superadmin");
+            if (superAdmin != null)
+            {
+                var roleAdmin = await roleRepository.GetRoleByNameAsync(RoleConstantType.Admin);
+                if (roleAdmin != null)
+                {
+                    _ = await userRepository.AddRoleToUserAsync(superAdmin.Id, roleAdmin.Id);
+                }
+                var roleUser = await roleRepository.GetRoleByNameAsync(RoleConstantType.User);
+                if (roleUser != null)
+                {
+                    _ = await userRepository.AddRoleToUserAsync(superAdmin.Id, roleUser.Id);
+                }
+            }
+        }
+
+        async Task RunSeedRoleAdminAndUserAsync()
+        {
+
+            Domain.Entity.RoleEntity? roleAdmin = await roleRepository.GetRoleByNameAsync(
+                RoleConstantType.Admin
+            );
             if (roleAdmin == null)
             {
                 roleAdmin = new Domain.Entity.RoleEntity
@@ -23,7 +54,10 @@ namespace Blog.Application.Services.Common
                 };
                 await roleRepository.AddAsync(roleAdmin);
             }
-            Domain.Entity.RoleEntity? roleUser = await roleRepository.GetRoleByNameAsync(RoleConstantType.User);
+
+            Domain.Entity.RoleEntity? roleUser = await roleRepository.GetRoleByNameAsync(
+                RoleConstantType.User
+            );
             if (roleUser == null)
             {
                 roleUser = new Domain.Entity.RoleEntity
@@ -33,11 +67,20 @@ namespace Blog.Application.Services.Common
                 };
                 await roleRepository.AddAsync(roleUser);
             }
+
+
+
+        }
+
+
+        async Task RunSeedUserAdminAsync()
+        {
             Domain.Entity.UserEntity? superAdmin = await userRepository.GetUserByNameAsync(
-                "superadmin"
-            );
+               "superadmin"
+           );
             if (superAdmin == null)
             {
+
                 superAdmin = new Domain.Entity.UserEntity
                 {
                     Username = "superadmin",
@@ -45,15 +88,8 @@ namespace Blog.Application.Services.Common
                     Email = "superadmin@mail.com",
                 };
                 var userId = await userRepository.AddAsync(superAdmin);
-                superAdmin = await userRepository.GetUserByNameAsync("superadmin");
-
-                roleAdmin = await roleRepository.GetRoleByNameAsync(RoleConstantType.Admin);
-                if (roleAdmin != null) {
-                    _ = await userRepository.AddRoleToUserAsync(userId, roleAdmin.Id);
-                }
-                
             }
-
         }
+
     }
 }

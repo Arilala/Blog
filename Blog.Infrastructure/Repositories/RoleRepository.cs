@@ -26,7 +26,7 @@ namespace Blog.Infrastructure.Repositories
 
         public async Task<bool> ExistsByNameAsync(string roleName, CancellationToken ct = default)
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.CheckRoleByName);
+            string sql = GetSqlQuery(Sql.SqlResources.CheckRoleByName);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,
@@ -38,7 +38,7 @@ namespace Blog.Infrastructure.Repositories
 
         public async Task<RoleEntity?> GetRoleByNameAsync(string roleName, CancellationToken ct = default)
         {
-            string sql = QueryProvider.GetSqlQuery(Sql.SqlResources.GetRoleByName);
+            string sql = GetSqlQuery(Sql.SqlResources.GetRoleByName);
             using var connection = ConnectionFactory.GetOpenConnection();
             var command = new CommandDefinition(
                 commandText: sql,
@@ -46,6 +46,18 @@ namespace Blog.Infrastructure.Repositories
                 cancellationToken: ct
             );
             return await connection.QueryFirstOrDefaultAsync<RoleEntity>(command);
+        }
+
+        public async Task<List<RoleEntity>> GetRoleByUserIdAsync(int userId, CancellationToken ct = default)
+        {
+           string sql = GetSqlQuery(Sql.SqlResources.GetRoleByUserId);
+            using var connection = ConnectionFactory.GetOpenConnection();
+            var command = new CommandDefinition(
+                commandText: sql,
+                parameters: new { UserId = userId },
+                cancellationToken: ct
+            );
+            return (await connection.QueryAsync<RoleEntity>(command)).ToList();
         }
     }
 }
