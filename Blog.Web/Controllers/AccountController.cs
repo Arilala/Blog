@@ -11,12 +11,21 @@ namespace Blog.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IQueryMediator _queryMediator;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(IQueryMediator queryMediator)
+        public AccountController(IQueryMediator queryMediator, ILogger<AccountController> logger)
         {
             _queryMediator = queryMediator;
+            _logger = logger;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Login()
+        {
+            _logger.LogInformation("Page login");
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid) {
