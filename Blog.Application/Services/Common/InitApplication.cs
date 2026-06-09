@@ -41,7 +41,6 @@ namespace Blog.Application.Services.Common
 
         async Task RunSeedRoleAdminAndUserAsync()
         {
-
             Domain.Entity.RoleEntity? roleAdmin = await roleRepository.GetRoleByNameAsync(
                 RoleConstantType.Admin
             );
@@ -67,20 +66,15 @@ namespace Blog.Application.Services.Common
                 };
                 await roleRepository.AddAsync(roleUser);
             }
-
-
-
         }
-
 
         async Task RunSeedUserAdminAsync()
         {
             Domain.Entity.UserEntity? superAdmin = await userRepository.GetUserByNameAsync(
-               "superadmin"
-           );
+                "superadmin"
+            );
             if (superAdmin == null)
             {
-
                 superAdmin = new Domain.Entity.UserEntity
                 {
                     Username = "superadmin",
@@ -90,6 +84,5 @@ namespace Blog.Application.Services.Common
                 var userId = await userRepository.AddAsync(superAdmin);
             }
         }
-
     }
 }
